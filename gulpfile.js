@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var sass = require('gulp-sass');
+var ghPages = require('gulp-gh-pages');
 
 gulp.task('js', function(){
     gulp.src('./js/main.js')
@@ -25,6 +26,11 @@ gulp.task('sass', function() {
 gulp.task('watch', function() {
     gulp.watch('./css/**/*.scss', gulp.series('sass'));
     gulp.watch('./js/*.js', gulp.series('js'));
+});
+
+gulp.task('deploy', function() {
+    return gulp.src('./**/*')
+      .pipe(ghPages());
 });
 
 gulp.task('default', gulp.parallel('watch', 'browser-sync'));
