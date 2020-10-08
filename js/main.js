@@ -139,7 +139,13 @@ document.addEventListener("DOMContentLoaded", function() {
 		let buttons = [...document.querySelectorAll('.product-box__btn')];
 
 		buttons.map(button => {
-			button.addEventListener('click', addItemToCart);
+			button.addEventListener('click', function () {
+				let box = this.closest('.product-box__item');
+				let qtyItem = Number(box.querySelector('.qty__item').value);
+				if (qtyItem > 0) {
+					addItemToCart.bind(this)()
+				}
+			});
 		})
 
 		return item;
