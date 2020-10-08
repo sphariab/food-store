@@ -281,19 +281,19 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 
 	function validateForm(){
-			if( document.userForm.name.value == "" ) {
-				alert( "Please provide your name!" );
-				document.userForm.name.focus() ;
+		if( document.userForm.name.value == "" ) {
+			alert( "Please provide your name!" );
+			document.userForm.name.focus() ;
 
-			}
+		}
 
-			if( document.userForm.email.value == "" ) {
-				alert( "Please provide your Email!" );
-				document.userForm.email.focus() ;
+		if( document.userForm.email.value == "" ) {
+			alert( "Please provide your Email!" );
+			document.userForm.email.focus() ;
 
-			} else {
-				clearModal();
-				showThanksPopup();
-			}
+		} else {
+			clearModal();
+			showThanksPopup();
+		}
 	}
 });
