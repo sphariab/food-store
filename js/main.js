@@ -157,7 +157,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		let id = box.dataset.id;
 		let price = goods[id].price;
 		qty = qty + qtyItem;
-
 		summary = summary + price*qtyItem;
 
 		let qtyItemBox = document.getElementsByClassName('red-info')[0];
@@ -274,6 +273,8 @@ document.addEventListener("DOMContentLoaded", function() {
 	function clearCartInfo(){
 		document.querySelectorAll('.red-info')[0].innerHTML='ХХХ';
 		document.querySelectorAll('.red-info')[1].innerHTML='ХХХ';
+		qty = 0;
+		summary = 0;
 	}
 
 	function showThanksPopup (){
@@ -281,15 +282,19 @@ document.addEventListener("DOMContentLoaded", function() {
 	}
 
 	function validateForm(){
-		if( document.userForm.name.value == "" ) {
-			alert( "Please provide your name!" );
-			document.userForm.name.focus() ;
+		let name = document.userForm.name,
+			email = document.userForm.email;
 
+		if( name.value == "" || !name.value.replace(/\s/g, '').length) {
+			alert( "Please enter correct name!" );
+			name.focus() ;
+			return false
 		}
 
-		if( document.userForm.email.value == "" ) {
-			alert( "Please provide your Email!" );
-			document.userForm.email.focus() ;
+		if( email.value == "" || !email.value.replace(/\s/g, '').length ) {
+			alert( "Please provide correct Email!" );
+			email.focus() ;
+			return false
 
 		} else {
 			clearModal();
